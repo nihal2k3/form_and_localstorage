@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-    <form id="formc">
+    <form id="formc" action="json.html">
         <div class="form-group">
             <label for="Name">Name :</label>
             <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name">
@@ -40,18 +40,20 @@
             event.preventDefault();
           let form_data =  $("#formc").serializeArray();
 
-          if(localStorage.getItem('px_data') == undefined || localStorage.getItem('px_data') == ''){
+          if(localStorage.getItem('hello') == undefined || localStorage.getItem('hello') == ''){
+            // let data = [];
+            // data.push(form_data);
 
-            localStorage.setItem('px_data',JSON.stringify([form_data]));
+            localStorage.setItem('hello', JSON.stringify([form_data]));
           }else{
-            let getItem = JSON.parse( localStorage.getItem('px_data'));
-            
+            let get = JSON.parse( localStorage.getItem('hello'));
+            // localStorage.getItem('hello');
             let data = [];
             data.push(form_data);
-            getItem.map((item)=>{
+            get.map(function (item){
                 data.push(item);
             });
-            localStorage.setItem('px_data',JSON.stringify(data));
+            localStorage.setItem('hello',JSON.stringify(data));
 
           }
             alert("done")
